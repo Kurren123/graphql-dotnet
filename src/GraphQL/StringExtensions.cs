@@ -77,6 +77,16 @@ namespace GraphQL
             return $"{char.ToLowerInvariant(s[0])}{s.Substring(1)}";
         }
 
+        public static string ToPascalCase(this string s)
+        {
+            if (string.IsNullOrWhiteSpace(s))
+            {
+                return string.Empty;
+            }
+
+            return $"{char.ToUpperInvariant(s[0])}{s.Substring(1)}";
+        }
+
         private static object GetValue(object value)
         {
             var objectValue = value as JObject;

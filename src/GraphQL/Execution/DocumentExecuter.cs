@@ -86,6 +86,8 @@ namespace GraphQL
             var metrics = new Metrics();
             metrics.Start(config.OperationName);
 
+            config.Schema.FieldNameConverter = config.FieldNameConverter;
+
             config.FieldMiddleware.ApplyTo(config.Schema);
 
             var result = new ExecutionResult { Query = config.Query };
@@ -539,7 +541,7 @@ namespace GraphQL
 
             try
             {
-                AssertValidValue(schema, type, input, variable.Name); 
+                AssertValidValue(schema, type, input, variable.Name);
             }
             catch (InvalidValueException error)
             {
